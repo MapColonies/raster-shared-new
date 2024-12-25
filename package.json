@@ -48,6 +48,9 @@
     "@commitlint/config-conventional": "^19.6.0",
     "@map-colonies/eslint-config": "^4.0.0",
     "@map-colonies/prettier-config": "^0.0.1",
+    "@map-colonies/tsconfig": "^1.0.0",
+    "@swc/core": "^1.7.26",
+    "@swc/jest": "^0.2.36",
     "@types/jest": "^29.4.0",
     "@types/node": "^14.14.12",
     "commitlint": "^19.6.1",
@@ -60,9 +63,11 @@
     "ts-jest": "^29.0.5",
     "tsc-alias": "^1.8.10",
     "typedoc": "^0.27.5",
-    "@swc/core": "^1.7.26",
-    "@swc/jest": "^0.2.36",
-    "typescript": "^5.7.2",
-    "@map-colonies/tsconfig": "^1.0.0"
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@map-colonies/mc-priority-queue": "^8.2.1",
+    "geojson": "^0.5.0",
+    "zod": "^3.24.1"
   }
 }
