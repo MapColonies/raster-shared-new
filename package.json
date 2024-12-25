@@ -1,6 +1,6 @@
 {
   "name": "@map-colonies/ts-npm-package-boilerplate",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "description": "This is template for map colonies typescript packages",
   "main": "./dist/index.js",
   "exports": {
