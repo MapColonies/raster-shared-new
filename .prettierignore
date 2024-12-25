@@ -1,0 +1,8 @@
+dist
+.github
+CHANGELOG.md
+package-lock.json
+README.md
+coverage
+reports
+docs

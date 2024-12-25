@@ -1,0 +1,68 @@
+{
+  "name": "@map-colonies/ts-npm-package-boilerplate",
+  "version": "1.0.3",
+  "description": "This is template for map colonies typescript packages",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "test": "jest --config=./tests/configurations/jest.config.js",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "prelint:fix": "npm run format:fix",
+    "prelint": "npm run format",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "prebuild": "npm run clean",
+    "build": "tsc --project tsconfig.build.json",
+    "start": "npm run build && cd dist && node ./index.js",
+    "clean": "rimraf dist",
+    "prepack": "npm run build",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MapColonies/ts-npm-package-boilerplate.git"
+  },
+  "author": "MapColonies",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MapColonies/ts-npm-package-boilerplate/issues"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "homepage": "https://github.com/MapColonies/ts-npm-package-boilerplate#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@map-colonies/eslint-config": "^4.0.0",
+    "@map-colonies/prettier-config": "^0.0.1",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^14.14.12",
+    "commitlint": "^19.6.1",
+    "eslint": "^8.36.0",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "jest-html-reporters": "^3.1.4",
+    "prettier": "^3.4.2",
+    "pretty-quick": "^4.0.0",
+    "ts-jest": "^29.0.5",
+    "tsc-alias": "^1.8.10",
+    "typedoc": "^0.27.5",
+    "@swc/core": "^1.7.26",
+    "@swc/jest": "^0.2.36",
+    "typescript": "^5.7.2",
+    "@map-colonies/tsconfig": "^1.0.0"
+  }
+}
