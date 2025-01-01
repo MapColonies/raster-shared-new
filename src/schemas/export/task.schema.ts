@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { TileFormatStrategy } from '../../constants/exportConstants';
+import { TileFormatStrategy } from '../../constants/export/exportConstants';
 import { TileOutputFormat } from '@map-colonies/mc-model-types';
 import { ITileRange } from '@map-colonies/mc-utils';
 import { mapSourceSchema } from './export.schema';

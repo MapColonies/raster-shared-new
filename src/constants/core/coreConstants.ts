@@ -37,4 +37,5 @@ export const CORE_VALIDATIONS = {
     description: 'URL must start with http:// or https://',
   },
 } satisfies ValidationRules;
+
 /* eslint-enable @typescript-eslint/naming-convention */

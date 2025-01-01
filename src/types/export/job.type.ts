@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { exportJobParametersSchema } from '../../zod/export/job.schema';
 import { IJobResponse } from '@map-colonies/mc-priority-queue';
 import { exportTaskParameters } from './task.type';
+import { exportJobParametersSchema } from '../../schemas/export/job.schema';
 
 export type exportJobParameters = z.infer<typeof exportJobParametersSchema>;
 
