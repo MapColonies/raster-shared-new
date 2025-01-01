@@ -14,13 +14,13 @@ export const JobTypes = {
 export type JobTypes = (typeof JobTypes)[keyof typeof JobTypes];
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export const TskTypes = {
+export const TaskTypes = {
   Init: 'init',
   Finalize: 'finalize',
 } as const;
 /* eslint-enable @typescript-eslint/naming-convention */
 
-export type TaskTypes = (typeof TskTypes)[keyof typeof TskTypes];
+export type TaskTypes = (typeof TaskTypes)[keyof typeof TaskTypes];
 
 export const INGESTION_VALIDATIONS = {
   boundingBox: {
