@@ -8,19 +8,21 @@ export const callbackSchema = z.object({
 
 export const callbacksArraySchema = z.array(callbackSchema);
 
-export const exportInputParams = z.object({
+export const exportInputParamsSchema = z.object({
   crs: z.literal('EPSG:4326'),
   roi: featureCollectionSchema,
-  callbacks: callbacksArraySchema,
+  callbacks: callbacksArraySchema.optional(),
+});
+
+export const exportAdditionalParamsSchema = z.object({
+  fileNamesTemplates: fileNamesTemplatesSchema,
+  relativeDirectoryPath: z.string(),
 });
 
 export const exportJobParametersSchema = z
   .object({
-    exportInputParams: exportInputParams,
-    additionalParams: z.object({
-      fileNamesTemplates: fileNamesTemplatesSchema,
-      relativeDirectoryPath: z.string(),
-    }),
+    exportInputParams: exportInputParamsSchema,
+    additionalParams: exportAdditionalParamsSchema,
     cleanupDataParams: cleanupDataSchema.optional(),
     callbackParams: callbackExportResponseSchema.optional(),
   })

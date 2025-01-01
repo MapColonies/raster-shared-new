@@ -1,6 +1,6 @@
 import { MultiPolygon, Polygon } from 'geojson';
 import { z } from 'zod';
-import { ArtifactType, MergerSourceTypeValues } from '../../constants/export/exportConstants';
+import { ArtifactType, MergerSourceType } from '../../constants/export/exportConstants';
 import { OperationStatus } from '@map-colonies/mc-priority-queue';
 
 const featureSchema = z.object({
@@ -13,7 +13,7 @@ const featureSchema = z.object({
 });
 export const mapSourceSchema = z.object({
   path: z.string(),
-  type: z.enum(MergerSourceTypeValues),
+  type: z.nativeEnum(MergerSourceType),
   extent: z
     .object({
       minX: z.number(),
