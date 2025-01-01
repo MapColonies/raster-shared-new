@@ -8,4 +8,6 @@ export const TileFormatStrategy = {
   MIXED: 'mixed',
 };
 
-export const MergerSourceTypeValues = ['S3', 'GPKG', 'FS'] as const;
+export const MergerSourceType = ['S3', 'GPKG', 'FS'] as const;
+
+export type MergerSourceType = (typeof MergerSourceType)[keyof typeof MergerSourceType];

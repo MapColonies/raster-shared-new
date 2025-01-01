@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { callbackSchema, callbacksArraySchema } from '../../zod/export/job.schema';
+import { callbackSchema, callbacksArraySchema } from '../../schemas/export/job.schema';
 import { callbackExportResponseSchema, cleanupDataSchema, fileNamesTemplatesSchema } from '../../zod/export/export.schema';
 
 export type callbackTarget = z.infer<typeof callbackSchema>;
