@@ -66,7 +66,9 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@map-colonies/mc-model-types": "^17.13.4",
     "@map-colonies/mc-priority-queue": "^8.2.1",
+    "@map-colonies/mc-utils": "^3.2.0",
     "geojson": "^0.5.0",
     "zod": "^3.24.1"
   }
