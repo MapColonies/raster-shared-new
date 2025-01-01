@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import { z } from 'zod';
 import { MultiPolygon, Polygon } from 'geojson';
-import { VALIDATIONS } from '../../constants/ingestionConstants';
-import { RasterProductTypes, Transparency } from '../../constants/coreConstants';
+import { INGESTION_VALIDATIONS } from '../../constants/ingestion/ingestionConstants';
+import { RasterProductTypes, Transparency } from '../../constants/core/coreConstants';
 
 export const newMetadataSchema = z
   .object({
-    productId: z.string().regex(new RegExp(VALIDATIONS.productId.pattern)),
+    productId: z.string().regex(new RegExp(INGESTION_VALIDATIONS.productId.pattern)),
     productName: z.string().min(1),
     productType: z.nativeEnum(RasterProductTypes),
     srs: z.literal('4326'),
     srsName: z.literal('WGS84GEO'),
     transparency: z.nativeEnum(Transparency), // mc-models
     region: z.array(z.string().min(1)).min(1),
-    classification: z.string().regex(new RegExp(VALIDATIONS.classification.pattern)),
+    classification: z.string().regex(new RegExp(INGESTION_VALIDATIONS.classification.pattern)),
     producerName: z.string().optional(),
-    scale: z.number().min(VALIDATIONS.scale.min).max(VALIDATIONS.scale.max).optional(),
+    scale: z.number().min(INGESTION_VALIDATIONS.scale.min).max(INGESTION_VALIDATIONS.scale.max).optional(),
     productSubType: z.string().optional(),
     description: z.string().optional(),
   })
@@ -23,7 +23,7 @@ export const newMetadataSchema = z
 
 export const updateMetadataSchema = z
   .object({
-    classification: z.string().regex(new RegExp(VALIDATIONS.classification.pattern)),
+    classification: z.string().regex(new RegExp(INGESTION_VALIDATIONS.classification.pattern)),
   })
   .describe('updateMetadataSchema');
 
@@ -35,58 +35,60 @@ export const aggregationMetadataSchema = z
       imagingTimeEndUTC: z.coerce.date({ message: 'Imaging time end UTC should be a datetime' }),
       maxHorizontalAccuracyCE90: z
         .number({ message: 'Max horizontal accuracy CE90 should be a number' })
-        .min(VALIDATIONS.horizontalAccuracyCE90.min, {
-          message: `Max horizontal accuracy CE90 should not be less than ${VALIDATIONS.horizontalAccuracyCE90.min}`,
+        .min(INGESTION_VALIDATIONS.horizontalAccuracyCE90.min, {
+          message: `Max horizontal accuracy CE90 should not be less than ${INGESTION_VALIDATIONS.horizontalAccuracyCE90.min}`,
         })
-        .max(VALIDATIONS.horizontalAccuracyCE90.max, {
-          message: `Max horizontal accuracy CE90 should not be larger than ${VALIDATIONS.horizontalAccuracyCE90.max}`,
+        .max(INGESTION_VALIDATIONS.horizontalAccuracyCE90.max, {
+          message: `Max horizontal accuracy CE90 should not be larger than ${INGESTION_VALIDATIONS.horizontalAccuracyCE90.max}`,
         }),
       maxResolutionDeg: z
         .number({ message: 'Max resolution degree should be a number' })
-        .min(VALIDATIONS.resolutionDeg.min, {
-          message: `Max resolution degree should not be less than ${VALIDATIONS.resolutionDeg.min}`,
+        .min(INGESTION_VALIDATIONS.resolutionDeg.min, {
+          message: `Max resolution degree should not be less than ${INGESTION_VALIDATIONS.resolutionDeg.min}`,
         })
-        .max(VALIDATIONS.resolutionDeg.max, {
-          message: `Max resolution degree should not be larger than ${VALIDATIONS.resolutionDeg.max}`,
+        .max(INGESTION_VALIDATIONS.resolutionDeg.max, {
+          message: `Max resolution degree should not be larger than ${INGESTION_VALIDATIONS.resolutionDeg.max}`,
         }),
       maxResolutionMeter: z
         .number({ message: 'Max resolution meter should be a number' })
-        .min(VALIDATIONS.resolutionMeter.min, {
-          message: `Max resolution meter should not be less than ${VALIDATIONS.resolutionMeter.min}`,
+        .min(INGESTION_VALIDATIONS.resolutionMeter.min, {
+          message: `Max resolution meter should not be less than ${INGESTION_VALIDATIONS.resolutionMeter.min}`,
         })
-        .max(VALIDATIONS.resolutionMeter.max, {
-          message: `Max resolution meter should not be larger than ${VALIDATIONS.resolutionMeter.max}`,
+        .max(INGESTION_VALIDATIONS.resolutionMeter.max, {
+          message: `Max resolution meter should not be larger than ${INGESTION_VALIDATIONS.resolutionMeter.max}`,
         }),
       minHorizontalAccuracyCE90: z
         .number({ message: 'Min horizontal accuracy CE90 should be a number' })
-        .min(VALIDATIONS.horizontalAccuracyCE90.min, {
-          message: `Min horizontal accuracy CE90 should not be less than ${VALIDATIONS.horizontalAccuracyCE90.min}`,
+        .min(INGESTION_VALIDATIONS.horizontalAccuracyCE90.min, {
+          message: `Min horizontal accuracy CE90 should not be less than ${INGESTION_VALIDATIONS.horizontalAccuracyCE90.min}`,
         })
-        .max(VALIDATIONS.horizontalAccuracyCE90.max, {
-          message: `Min horizontal accuracy CE90 should not be larger than ${VALIDATIONS.horizontalAccuracyCE90.max}`,
+        .max(INGESTION_VALIDATIONS.horizontalAccuracyCE90.max, {
+          message: `Min horizontal accuracy CE90 should not be larger than ${INGESTION_VALIDATIONS.horizontalAccuracyCE90.max}`,
         }),
       minResolutionDeg: z
         .number({ message: 'Min resolution degree should be a number' })
-        .min(VALIDATIONS.resolutionDeg.min, {
-          message: `Min resolution degree should not be less than ${VALIDATIONS.resolutionDeg.min}`,
+        .min(INGESTION_VALIDATIONS.resolutionDeg.min, {
+          message: `Min resolution degree should not be less than ${INGESTION_VALIDATIONS.resolutionDeg.min}`,
         })
-        .max(VALIDATIONS.resolutionDeg.max, {
-          message: `Min resolution degree should not be larger than ${VALIDATIONS.resolutionDeg.max}`,
+        .max(INGESTION_VALIDATIONS.resolutionDeg.max, {
+          message: `Min resolution degree should not be larger than ${INGESTION_VALIDATIONS.resolutionDeg.max}`,
         }),
       minResolutionMeter: z
         .number({ message: 'Min resolution meter should be a number' })
-        .min(VALIDATIONS.resolutionMeter.min, {
-          message: `Min resolution meter should not be less than ${VALIDATIONS.resolutionMeter.min}`,
+        .min(INGESTION_VALIDATIONS.resolutionMeter.min, {
+          message: `Min resolution meter should not be less than ${INGESTION_VALIDATIONS.resolutionMeter.min}`,
         })
-        .max(VALIDATIONS.resolutionMeter.max, {
-          message: `Min resolution meter should not be larger than ${VALIDATIONS.resolutionMeter.max}`,
+        .max(INGESTION_VALIDATIONS.resolutionMeter.max, {
+          message: `Min resolution meter should not be larger than ${INGESTION_VALIDATIONS.resolutionMeter.max}`,
         }),
-      productBoundingBox: z.string({ message: 'Product bounding box should be a string' }).regex(new RegExp(VALIDATIONS.boundingBox.pattern), {
-        message: 'Product bounding box must be of the shape min_x,min_y,max_x,max_y',
-      }),
+      productBoundingBox: z
+        .string({ message: 'Product bounding box should be a string' })
+        .regex(new RegExp(INGESTION_VALIDATIONS.boundingBox.pattern), {
+          message: 'Product bounding box must be of the shape min_x,min_y,max_x,max_y',
+        }),
       sensors: z
         .array(
-          z.string({ message: 'Sensors should be an array of strings' }).regex(new RegExp(VALIDATIONS.sensor.pattern), {
+          z.string({ message: 'Sensors should be an array of strings' }).regex(new RegExp(INGESTION_VALIDATIONS.sensor.pattern), {
             message: 'Sensors should be an array with items not starting or ending with whitespace characters',
           }),
           { message: 'Sensors should be an array' }
@@ -114,5 +116,3 @@ export const aggregationMetadataSchema = z
     message: 'Max resolution meter should be less than or equal to min resolution meter',
   })
   .describe('aggregationLayerMetadataSchema');
-
-export type AggregationLayerMetadata = z.infer<typeof aggregationMetadataSchema>;

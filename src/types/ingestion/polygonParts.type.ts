@@ -1,13 +1,14 @@
 import z from 'zod';
-import { inputFilesSchema } from '../../zod/ingestion/inputFiles.schema';
-import { partSchema } from '../../zod/ingestion/polygonParts.schema';
-import { aggregationMetadataSchema, newMetadataSchema, updateMetadataSchema } from '../../zod/ingestion/metadata.schema';
-import { newLayerSchema, updateLayerSchema } from '../../zod/ingestion/ingestion.schema';
+import { inputFilesSchema } from '../../schemas/ingestion/inputFiles.schema';
+import { partSchema } from '../../schemas/ingestion/polygonParts.schema';
+import { aggregationMetadataSchema, newMetadataSchema, updateMetadataSchema } from '../../schemas/ingestion/metadata.schema';
+import { newLayerSchema, swapUpdateLayerSchema, updateLayerSchema } from '../../schemas/ingestion/ingestion.schema';
 
-type InputFiles = z.infer<typeof inputFilesSchema>;
-type Part = z.infer<typeof partSchema>;
+export type InputFiles = z.infer<typeof inputFilesSchema>;
+export type Part = z.infer<typeof partSchema>;
 export type NewMetadata = z.infer<typeof newMetadataSchema>;
 export type UpdateMetadata = z.infer<typeof updateMetadataSchema>;
 export type AggregationLayerMetadata = z.infer<typeof aggregationMetadataSchema>;
-export type NewLayerData = z.infer<typeof newLayerSchema>;
-export type UpdateLayerData = z.infer<typeof updateLayerSchema>;
+export type IngestionNewParams = z.infer<typeof newLayerSchema>;
+export type IngestionUpdateParams = z.infer<typeof updateLayerSchema>;
+export type IngestionSwapUpdateParams = z.infer<typeof swapUpdateLayerSchema>;
