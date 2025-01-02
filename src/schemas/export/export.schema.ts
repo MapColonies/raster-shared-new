@@ -1,7 +1,7 @@
-import { MultiPolygon, Polygon } from 'geojson';
+import { FeatureCollection, MultiPolygon, Polygon } from 'geojson';
 import { z } from 'zod';
-import { ArtifactType, MergerSourceType } from '../../constants/export/exportConstants';
 import { OperationStatus } from '@map-colonies/mc-priority-queue';
+import { ArtifactType, MergerSourceType } from '../../constants/export/exportConstants';
 
 const featureSchema = z.object({
   type: z.literal('Feature'),
@@ -33,10 +33,21 @@ export const artifactSchema = z.object({
 
 export const artifactsArraySchema = z.array(artifactSchema);
 
-export const featureCollectionSchema = z.object({
+export const baseFeatureCollectionSchema = z.object({
   type: z.literal('FeatureCollection'),
   features: z.array(featureSchema),
 });
+
+export const featureCollectionSchema = z.custom<FeatureCollection>(
+  (value) => {
+    // Perform type check (runtime validation)
+    const baseValidation = baseFeatureCollectionSchema.safeParse(value);
+    return baseValidation.success;
+  },
+  {
+    message: 'Invalid FeatureCollection',
+  }
+);
 
 export const fileNamesTemplatesSchema = z.object({
   dataURI: z.string(),

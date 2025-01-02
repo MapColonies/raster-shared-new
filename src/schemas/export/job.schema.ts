@@ -17,6 +17,7 @@ export const exportInputParamsSchema = z.object({
 export const exportAdditionalParamsSchema = z.object({
   fileNamesTemplates: fileNamesTemplatesSchema,
   relativeDirectoryPath: z.string(),
+  packageRelativePath: z.string(),
 });
 
 export const exportJobParametersSchema = z

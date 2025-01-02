@@ -1,7 +1,6 @@
 import { z } from 'zod';
-import { TileFormatStrategy } from '../../constants/export/exportConstants';
 import { TileOutputFormat } from '@map-colonies/mc-model-types';
-import { ITileRange } from '@map-colonies/mc-utils';
+import { TileFormatStrategy } from '../../constants/export/exportConstants';
 import { mapSourceSchema } from './export.schema';
 
 //TODO: maybe TileOutputFormat move to this repo

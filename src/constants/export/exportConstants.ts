@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export const ArtifactType = {
   METADATA: 'METADATA',
   GPKG: 'GPKG',
@@ -17,3 +18,5 @@ export const MergerSourceType = {
 export type ArtifactType = (typeof ArtifactType)[keyof typeof ArtifactType];
 export type TileFormatStrategy = (typeof TileFormatStrategy)[keyof typeof TileFormatStrategy];
 export type MergerSourceType = (typeof MergerSourceType)[keyof typeof MergerSourceType];
+
+/* eslint-disable @typescript-eslint/naming-convention */
